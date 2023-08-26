@@ -17,6 +17,9 @@
   "entrypoints": {
     "main": [
       "net.hexdummy.fabric.HexDummyFabric"
+    ],
+    "client": [
+      "net.hexdummy.fabric.HexDummyClientFabric"
     ]
   },
   "mixins": [
