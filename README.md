@@ -11,7 +11,8 @@ from [Architectury templates](https://github.com/architectury/architectury-templ
 
 ## How to get started?
 
-1. Create a repo from this template and clone it.
+1. Create a repo from this template (make sure to tick the "Include all branches" radio box for the online hex
+   book to work) and clone it.
 2. Add `modrinthApiToken` and `curseforgeApiToken` values to your user-specific gradle properties
    in [Gradle User Home](https://docs.gradle.org/current/userguide/directory_layout.html#dir:gradle_user_home).
    You can leave them empty for now.
@@ -25,10 +26,10 @@ from [Architectury templates](https://github.com/architectury/architectury-templ
    sources to see real implementations. If you're new to this,
    here's a challenge: try making a single-pattern equivalent of the raycast mantra.
 5. Launch the game client. Time for testing!
-6. (Optional) Set up the publishMods tasks to simplify publishing updates: add necessary API keys to your user-specific
-   properties, add
-   necessary project ids to root `gradle.properties`, and uncomment curseforge / modrinth / both segments in the
-   publishMods task in `build.gradle` files from `forge` and `fabric` directories.
+6. (Optional) Set up the publishMods tasks to simplify publishing updates: add necessary API keys to your
+   user-specific properties, add necessary project ids to root `gradle.properties`, and uncomment
+   curseforge / modrinth / both segments in the publishMods task in `build.gradle` files from `forge` and 
+   `fabric` directories.
 
 ## Common problems
 
