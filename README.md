@@ -11,9 +11,10 @@ from [Architectury templates](https://github.com/architectury/architectury-templ
 
 ## How to get started?
 
-1. Fork the repo.
-2. Make a copy of `template.env` and rename to `.env`. You can leave the API keys empty at this stage, just the file
-   itself is needed
+1. Create a repo from this template and clone it.
+2. Add `modrinthApiToken` and `curseforgeApiToken` values to your user-specific gradle properties
+   in [Gradle User Home](https://docs.gradle.org/current/userguide/directory_layout.html#dir:gradle_user_home).
+   You can leave them empty for now.
 3. In the entire project, rename occurrences of `hexdummy` to your mod's id, both in files and in directory structure.
    Preferably also change occurrences adjacent to "Dummy" in text and file names to something related to your
    project, and change the base package path to something other than `net.hexdummy`, e.g.
@@ -24,7 +25,8 @@ from [Architectury templates](https://github.com/architectury/architectury-templ
    sources to see real implementations. If you're new to this,
    here's a challenge: try making a single-pattern equivalent of the raycast mantra.
 5. Launch the game client. Time for testing!
-6. (Optional) Set up the publishMods tasks to simplify publishing updates: add necessary API keys to `.env`, add
+6. (Optional) Set up the publishMods tasks to simplify publishing updates: add necessary API keys to your user-specific
+   properties, add
    necessary project ids to root `gradle.properties`, and uncomment curseforge / modrinth / both segments in the
    publishMods task in `build.gradle` files from `forge` and `fabric` directories.
 
@@ -56,8 +58,11 @@ itself and some other addons use.
 
 ## Acknowledgements
 
-- Petrak@ and other Hex Casting devs.
-- Talia-12, author of the stripped-down addon template which helped me get started with this one.
-- SamsTheNerd, author of the Hex Gloop addon also powered by Architectury: its setup code helped me resolve an issue or
-  two with Architectury here.
-- Architectury devs and their discord.
+- [Petrak@](https://github.com/gamma-delta) and other Hex Casting devs, for making Hex Casting in general.
+- [Talia-12](https://github.com/Talia-12), for making the stripped-down addon template which helped me get started
+  with this one.
+- [SamsTheNerd](https://github.com/SamsTheNerd), author of the Hex Gloop addon also powered by Architectury: its
+  setup code helped me resolve an issue or two with Architectury here.
+- [Architectury](https://github.com/architectury) devs and their Discord server.
+- [\[object Hexxy.Media\]](https://github.com/object-Object) and [Cypher](https://github.com/Cypher121), for some
+  helpful pointers after initial template release.

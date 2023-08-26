@@ -28,7 +28,7 @@ dependencies {
     // Loaders and base APIs
     modImplementation "net.fabricmc:fabric-loader:${project.fabricLoaderVersion}"
     modApi "net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}"
-    modImplementation("net.fabricmc:fabric-language-kotlin:${rootProject.fabricKotlinVersion}")
+    modImplementation("net.fabricmc:fabric-language-kotlin:${project.fabricKotlinVersion}")
     modApi("dev.architectury:architectury-fabric:${architecturyVersion}") {
         // Fix for the "two fabric loaders" loading crash
         exclude group: "net.fabricmc", module: "fabric-loader"
@@ -141,7 +141,7 @@ publishMods {
 
     // Uncomment your desired platform(s)
 //    curseforge {
-//        accessToken = env.CURSEFORGE_API_KEY.value
+//        accessToken = project.curseforgeApiToken
 //        projectId = project.curseforgeId
 //        minecraftVersions.add(minecraftVersion)
 //
@@ -160,7 +160,7 @@ publishMods {
 //    }
 //
 //    modrinth {
-//        accessToken = env.MODRINTH_API_KEY.value
+//        accessToken = project.modrinthApiToken
 //        projectId = project.modrinthId
 //        minecraftVersions.add("1.19.2")
 //

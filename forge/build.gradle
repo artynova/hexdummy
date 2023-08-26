@@ -136,7 +136,8 @@ publishMods {
 
     // Uncomment your desired platform(s)
 //    curseforge {
-//        accessToken = env.CURSEFORGE_API_KEY.value
+//        accessToken = project.curseforgeApiToken
+//        println accessToken.get()
 //        projectId = project.curseforgeId
 //        minecraftVersions.add(minecraftVersion)
 //
@@ -152,7 +153,7 @@ publishMods {
 //    }
 //
 //    modrinth {
-//        accessToken = env.MODRINTH_API_KEY.value
+//        accessToken = project.modrinthApiToken
 //        projectId = project.modrinthId
 //        minecraftVersions.add("1.19.2")
 //
