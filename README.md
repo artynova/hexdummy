@@ -39,8 +39,7 @@ from [Architectury templates](https://github.com/architectury/architectury-templ
 
 ## Why did I make this?
 
-To put it simply, I have a WIP addon of my own ([Hex Channeling](https://github.com/artynova/hexchanneling), shameless
-plug time), and was looking for a sustainable long-term solution for supporting all the major loaders (Forge,
+To put it simply, I have a WIP addon of my own, and was looking for a sustainable long-term solution for supporting all the major loaders (Forge,
 Fabric, Quilt). I had a hard time figuring it out at first, then got carried away, and the end result is something
 that, I think, might be useful to people other than me.
 
