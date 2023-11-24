@@ -14,12 +14,9 @@ libs/
 .idea/
 classes/
 .metadata
-.vscode
 .settings
 *.launch
 
 venv
 
 .architectury-transformer
-*src/generated
-doc/out.html
