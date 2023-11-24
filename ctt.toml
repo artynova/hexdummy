@@ -1,0 +1,5 @@
+# copier-template-tester configuration and default answers
+
+[defaults]
+
+[output.".ctt/defaults"]
