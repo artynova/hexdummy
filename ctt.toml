@@ -1,5 +1,6 @@
 # copier-template-tester configuration and default answers
 
 [defaults]
+modid = "hexdummy"
 
 [output.".ctt/defaults"]

@@ -1,4 +1,41 @@
+# Copier settings
+
 _subdirectory: template
 _answers_file: .copier-answers.hexdummy.yml
 
-modid: hexdummy
+# questions
+
+modid:
+  type: str
+
+classname:
+  type: str
+  help: "Base text for classnames (eg. '{{ modid|capitalize }}' -> '{{ modid|capitalize }}Client.java')"
+  default: "{{ modid|capitalize }}"
+
+display_name:
+  type: str
+  default: "{{ classname }}"
+
+package:
+  type: str
+  default: "net.{{ modid }}"
+
+capitalize_platforms:
+  type: bool
+  help: Capitalize platform directory names? (eg. Common vs common)
+  default: false
+
+# computed values
+
+__common:
+  when: false
+  default: "{% 'Common' if capitalize_platforms else 'common' %}"
+
+__fabric:
+  when: false
+  default: "{% 'Fabric' if capitalize_platforms else 'fabric' %}"
+
+__forge:
+  when: false
+  default: "{% 'Forge' if capitalize_platforms else 'forge' %}"
