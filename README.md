@@ -14,21 +14,27 @@ from [Architectury templates](https://github.com/architectury/architectury-templ
 1. Install Python 3.11+, then follow [these instructions](https://pypa.github.io/pipx/#install-pipx) to install pipx.
    * pipx is basically like Node's `npx` but for Python - it's a tool to help you install and run end-user applications written in Python.
 2. Create, clone, and enter a new GitHub repo.
-3. From the repo root, run these commands to copy and set up the template, then follow the prompts:
-   ```
+3. From the repo root, run these commands to copy the template, then follow the prompts to set it up:
+   ```sh
    pipx install copier
+
+   # main addon
    copier copy gh:artynova/hexdummy .
+   
+   # hexdoc web book
+   # note: unless otherwise specified, when the prompts here refer to "package", it means the Python hexdoc addon package being created
+   copier copy gh:object-Object/hexdoc-hexcasting-template . --data-file .hexdoc-template-inputs.yml --skip .gitignore --defaults
    ```
-4. Add `modrinthApiToken` and `curseforgeApiToken` values to your user-specific gradle properties
+5. Add `modrinthApiToken` and `curseforgeApiToken` values to your user-specific gradle properties
    in [Gradle User Home](https://docs.gradle.org/current/userguide/directory_layout.html#dir:gradle_user_home).
    You can leave them empty for now.
-5. Check out the [Architectury wiki](https://docs.architectury.dev/start) if you haven't yet. If you can't find
+6. Check out the [Architectury wiki](https://docs.architectury.dev/start) if you haven't yet. If you can't find
    something there, try searching on their Discord.
-6. After checking out how demo patterns are registered, replace them with your own! You can look into Hex Casting
+7. After checking out how demo patterns are registered, replace them with your own! You can look into Hex Casting
    sources to see real implementations. If you're new to this,
    here's a challenge: try making a single-pattern equivalent of the raycast mantra.
-7. Launch the game client with `gradlew fabric:runClient`. Time for testing!
-8. (Optional) Set up the publishMods tasks to simplify publishing updates: add necessary API keys to your
+8. Launch the game client with `gradlew fabric:runClient`. Time for testing!
+9. (Optional) Set up the publishMods tasks to simplify publishing updates: add necessary API keys to your
    user-specific properties, add necessary project ids to root `gradle.properties`, and uncomment
    curseforge / modrinth / both segments in the publishMods task in `build.gradle` files from `forge` and 
    `fabric` directories.

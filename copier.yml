@@ -30,13 +30,21 @@ license:
   type: str
   default: MIT
 
+github_repo:
+  type: str
+  default: "{{ modid }}"
+
+default_branch:
+  type: str
+  default: main
+
 sources_url:
   type: str
-  default: "https://github.com/{{ author }}/{{ modid }}"
+  default: "https://github.com/{{ author }}/{{ github_repo }}"
 
 homepage_url:
   type: str
-  default: "https://{{ author|lower }}.github.io/{{ modid }}"
+  default: "https://{{ author|lower }}.github.io/{{ github_repo }}"
 
 initial_mod_version:
   type: str
@@ -83,3 +91,12 @@ forge_path:
 package_path:
   when: false
   default: "{{ package|replace('.', '/') }}"
+
+book_id_path:
+  when: false
+  default: "{{ modid }}book"
+
+# for better hexdoc compat
+gradle_mod_version_key:
+  when: false
+  default: modVersion
