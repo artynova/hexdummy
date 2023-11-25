@@ -39,3 +39,7 @@ __fabric:
 __forge:
   when: false
   default: "{% 'Forge' if capitalize_platforms else 'forge' %}"
+
+__package_path:
+  when: false
+  default: "{{ package|replace('.', '/') }}"

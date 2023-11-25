@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.java.jinja": "jinja-java",
+        "*.properties.jinja": "jinja-properties",
+        "*.css.jinja": "jinja-css",
+    },
+}
