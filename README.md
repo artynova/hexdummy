@@ -25,15 +25,19 @@ from [Architectury templates](https://github.com/architectury/architectury-templ
    # note: unless otherwise specified, when the prompts here refer to "package", it means the Python hexdoc addon package being created
    copier copy gh:object-Object/hexdoc-hexcasting-template . --answers-file .hexdoc-template-inputs.yml --skip .gitignore --defaults
    ```
-5. Add `modrinthApiToken` and `curseforgeApiToken` values to your user-specific gradle properties
+4. Launch the game client with `gradlew fabric:runClient` to make sure it works.
+5. Finish setting up the web book:
+   1. Follow the setup steps in `doc/README.md`.
+   2. Try running `hexdoc serve` to make sure the book works.
+   3. Follow the [hexdoc-hexcasting-template setup steps](https://github.com/object-Object/hexdoc-hexcasting-template#setting-up-pages), starting at "Setting up Pages".
+6. Add `modrinthApiToken` and `curseforgeApiToken` values to your user-specific gradle properties
    in [Gradle User Home](https://docs.gradle.org/current/userguide/directory_layout.html#dir:gradle_user_home).
    You can leave them empty for now.
-6. Check out the [Architectury wiki](https://docs.architectury.dev/start) if you haven't yet. If you can't find
+7. Check out the [Architectury wiki](https://docs.architectury.dev/start) if you haven't yet. If you can't find
    something there, try searching on their Discord.
-7. After checking out how demo patterns are registered, replace them with your own! You can look into Hex Casting
+8. After checking out how demo patterns are registered, replace them with your own! You can look into Hex Casting
    sources to see real implementations. If you're new to this,
    here's a challenge: try making a single-pattern equivalent of the raycast mantra.
-8. Launch the game client with `gradlew fabric:runClient`. Time for testing!
 9. (Optional) Set up the publishMods tasks to simplify publishing updates: add necessary API keys to your
    user-specific properties, add necessary project ids to root `gradle.properties`, and uncomment
    curseforge / modrinth / both segments in the publishMods task in `build.gradle` files from `forge` and 
