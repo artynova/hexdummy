@@ -16,6 +16,7 @@ classes/
 .metadata
 .settings
 *.launch
+.DS_Store
 
 venv
 

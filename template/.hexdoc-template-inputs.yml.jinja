@@ -1,5 +1,5 @@
 author: {{ author }}
-book_id: {{ book_id }}
+book_id: "{{ modid }}:{{ book_id_path }}"
 default_branch: {{ default_branch }}
 github_repo: {{ github_repo }}
 gradle_mod_version_key: modVersion
@@ -15,5 +15,5 @@ multiloader: true
 pages_url: https://{{ author|lower }}.github.io/{{ github_repo }}
 pattern_regex:
   regex: '(?P<is_per_world>register|registerPerWorld)\(HexPattern\.fromAngles\("(?P<signature>[qweasd]+)",\s*HexDir\.(?P<startdir>\w+)\),\s*"(?P<name>[^"]+)"?'
-  per_world_value: "registerPerWorld"
+  per_world_value: registerPerWorld
 pattern_registry: registry/{{ classname }}PatternRegistry.java

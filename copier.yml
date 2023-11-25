@@ -3,6 +3,20 @@
 _subdirectory: template
 _answers_file: .copier-answers.hexdummy.yml
 
+_exclude:
+  # for copier-template-tester
+  - ".ctt"
+  - "ctt.toml"
+  # defaults (https://copier.readthedocs.io/en/latest/configuring/#exclude)
+  - "copier.yaml"
+  - "copier.yml"
+  - "~*"
+  - "*.py[co]"
+  - "__pycache__"
+  - ".git"
+  - ".DS_Store"
+  - ".svn"
+
 # questions
 
 modid:

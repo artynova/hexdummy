@@ -23,7 +23,7 @@ from [Architectury templates](https://github.com/architectury/architectury-templ
    
    # hexdoc web book
    # note: unless otherwise specified, when the prompts here refer to "package", it means the Python hexdoc addon package being created
-   copier copy gh:object-Object/hexdoc-hexcasting-template . --data-file .hexdoc-template-inputs.yml --skip .gitignore --defaults
+   copier copy gh:object-Object/hexdoc-hexcasting-template . --answers-file .hexdoc-template-inputs.yml --skip .gitignore --defaults
    ```
 5. Add `modrinthApiToken` and `curseforgeApiToken` values to your user-specific gradle properties
    in [Gradle User Home](https://docs.gradle.org/current/userguide/directory_layout.html#dir:gradle_user_home).
@@ -66,7 +66,12 @@ itself and some other addons use.
 
 ## Contributing
 
+Important: Remember to always add a new Git version tag when updating the template, or Copier won't pick up the new changes. See [hexdoc-hexcasting-template](https://github.com/object-Object/hexdoc-hexcasting-template) for a good example of this.
 
+To test the template and web book:
+- Follow the above instructions to install Python and pipx.
+- Install Nox: `pipx install nox`
+- Run the Nox session: `nox -s book`
 
 ## Acknowledgements
 
