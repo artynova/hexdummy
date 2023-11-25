@@ -31,7 +31,7 @@ sources_url:
 
 homepage_url:
   type: str
-  default: "https://{{ author }}.github.io/{{ modid }}"
+  default: "https://{{ author|lower }}.github.io/{{ modid }}"
 
 package:
   type: str
@@ -48,22 +48,22 @@ initial_version:
 
 # static/computed values
 
-__hexcasting_version:
+hexcasting_version:
   when: false
   default: "0.10.3"
 
-__common:
+common_path:
   when: false
   default: "{{ 'Common' if capitalize_platforms else 'common' }}"
 
-__fabric:
+fabric_path:
   when: false
   default: "{{ 'Fabric' if capitalize_platforms else 'fabric' }}"
 
-__forge:
+forge_path:
   when: false
   default: "{{ 'Forge' if capitalize_platforms else 'forge' }}"
 
-__package_path:
+package_path:
   when: false
   default: "{{ package|replace('.', '/') }}"

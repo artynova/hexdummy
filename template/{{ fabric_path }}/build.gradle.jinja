@@ -3,23 +3,15 @@ plugins {
     id "me.modmuss50.mod-publish-plugin" version "0.3.0"
 }
 
-archivesBaseName = getArtifactId("forge")
+archivesBaseName = getArtifactId("{{ fabric_path }}")
 
 architectury {
     platformSetupLoomIde()
-    forge()
+    fabric()
 }
 
 loom {
-    accessWidenerPath = project(":common").loom.accessWidenerPath
-
-    forge {
-        convertAccessWideners = true
-        extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
-
-        mixinConfig "{{ modid }}-common.mixins.json"
-        mixinConfig "{{ modid }}.mixins.json"
-    }
+    accessWidenerPath = project(":{{ common_path }}").loom.accessWidenerPath
 }
 
 configurations {
@@ -27,42 +19,53 @@ configurations {
     shadowCommon // Don't use shadow from the shadow plugin since it *excludes* files.
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
-    developmentForge.extendsFrom common
+    developmentFabric.extendsFrom common
 }
 
 dependencies {
     modCompileOnly(group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2') // for @Nonnull
 
-    forge "net.minecraftforge:forge:${project.forgeVersion}"
-    modApi "dev.architectury:architectury-forge:${project.architecturyVersion}"
-
-    modImplementation("at.petra-k.hexcasting:hexcasting-forge-${project.minecraftVersion}:${project.hexcastingVersion}") {
-        transitive = false
+    // Loaders and base APIs
+    modImplementation "net.fabricmc:fabric-loader:${project.fabricLoaderVersion}"
+    modApi "net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}"
+    modImplementation("net.fabricmc:fabric-language-kotlin:${project.fabricKotlinVersion}")
+    modApi("dev.architectury:architectury-fabric:${architecturyVersion}") {
+        // Fix for the "two fabric loaders" loading crash
+        exclude group: "net.fabricmc", module: "fabric-loader"
     }
 
-    // // Hex Casting Dependencies
-    modCompileOnly "at.petra-k.paucal:paucal-forge-${minecraftVersion}:${paucalVersion}"
-    modCompileOnly "vazkii.patchouli:Patchouli:${minecraftVersion}-${patchouliVersion}"
+    // Hex Casting stuff
+    modImplementation("at.petra-k.hexcasting:hexcasting-fabric-${minecraftVersion}:${hexcastingVersion}") {
+        // If not excluded here, calls a nonexistent method and crashes the dev client
+        exclude module: "phosphor"
+    }
 
-    modRuntimeOnly "at.petra-k.paucal:paucal-forge-${minecraftVersion}:${paucalVersion}"
-    modRuntimeOnly "vazkii.patchouli:Patchouli:${minecraftVersion}-${patchouliVersion}"
+    modImplementation "at.petra-k.paucal:paucal-fabric-${minecraftVersion}:${paucalVersion}"
+    modImplementation "vazkii.patchouli:Patchouli:${minecraftVersion}-${patchouliVersion}-FABRIC"
 
-    runtimeOnly "thedarkcolour:kotlinforforge:$project.forgeKotlinVersion"
+    modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-api:${cardinalComponentsVersion}"
 
-    common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+    modImplementation "com.jamieswhiteshirt:reach-entity-attributes:${entityReachVersion}"
+    include "com.jamieswhiteshirt:reach-entity-attributes:${entityReachVersion}"
+
+    modImplementation "io.github.tropheusj:serialization-hooks:${serializationHooksVersion}"
+    include "io.github.tropheusj:serialization-hooks:${serializationHooksVersion}"
+
+    modImplementation "dev.emi:trinkets:${trinketsVersion}"
+
+    common(project(path: ":{{ common_path }}", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":{{ common_path }}", configuration: "transformProductionFabric")) { transitive false }
 }
 
 processResources {
     inputs.property "version", project.version
 
-    filesMatching("META-INF/mods.toml") {
+    filesMatching("fabric.mod.json") {
         expand "version": project.version
     }
 }
 
 shadowJar {
-    exclude "fabric.mod.json"
     exclude "architectury.common.json"
 
     configurations = [project.configurations.shadowCommon]
@@ -70,6 +73,7 @@ shadowJar {
 }
 
 remapJar {
+    injectAccessWidener = true
     input.set shadowJar.archiveFile
     dependsOn shadowJar
     archiveClassifier.set null
@@ -80,7 +84,7 @@ jar {
 }
 
 sourcesJar {
-    def commonSources = project(":common").sourcesJar
+    def commonSources = project(":{{ common_path }}").sourcesJar
     dependsOn commonSources
     from commonSources.archiveFile.map { zipTree(it) }
 }
@@ -103,7 +107,7 @@ tasks.register("clearGeneratedBook", Delete) {
 tasks.register("copyBookToGenerated", Copy) {
     description "Copy the book from resources to generated resources."
 
-    from "../common/src/main/resources/$bookPath"
+    from "../{{ common_path }}/src/main/resources/$bookPath"
     into "src/generated/resources/$bookPath"
 }
 tasks.copyBookToGenerated.dependsOn(tasks.clearGeneratedBook)
@@ -112,8 +116,8 @@ tasks.sourcesJar.dependsOn(tasks.copyBookToGenerated)
 
 publishing {
     publications {
-        mavenForge(MavenPublication) {
-            artifactId = project.archivesBaseName + "-" + project.name
+        mavenFabric(MavenPublication) {
+            artifactId = project.archivesBaseName + "-" + project.name + "-fabric"
             from components.java
         }
     }
@@ -129,23 +133,26 @@ publishMods {
     additionalFiles.from(sourcesJar.archiveFile)
     changelog = getLatestChangelog()
     type = STABLE
-    modLoaders.add("forge")
+    modLoaders.add("fabric")
+    modLoaders.add("quilt")
 
-    version = project.version + "-forge"
-    displayName = "{{ display_name }} $project.version [Forge]"
+    version = project.version + "-fabric"
+    displayName = "{{ display_name }} $project.version [Fabric]"
 
     // Uncomment your desired platform(s)
 //    curseforge {
 //        accessToken = project.curseforgeApiToken
-//        println accessToken.get()
 //        projectId = project.curseforgeId
 //        minecraftVersions.add(minecraftVersion)
 //
+//        requires{
+//            slug = "fabric-api"
+//        }
 //        requires {
 //            slug = "architectury-api"
 //        }
 //        requires {
-//            slug = "kotlin-for-forge"
+//            slug = "fabric-language-kotlin"
 //        }
 //        requires {
 //            slug = "hexcasting"
@@ -157,11 +164,14 @@ publishMods {
 //        projectId = project.modrinthId
 //        minecraftVersions.add("1.19.2")
 //
+//        requires{
+//            slug = "fabric-api"
+//        }
 //        requires {
 //            slug = "architectury-api"
 //        }
 //        requires {
-//            slug = "kotlin-for-forge"
+//            slug = "fabric-language-kotlin"
 //        }
 //        requires {
 //            slug = "hex-casting"

@@ -3,5 +3,7 @@
 [defaults]
 modid = "hexdummy"
 author = "artynova"
+classname = "HexDummy"
+display_name = "Hex Dummy"
 
 [output.".ctt/defaults"]
