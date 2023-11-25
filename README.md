@@ -11,22 +11,24 @@ from [Architectury templates](https://github.com/architectury/architectury-templ
 
 ## How to get started?
 
-1. Create a repo from this template (make sure to tick the "Include all branches" radio box for the online hex
-   book to work) and clone it.
-2. Add `modrinthApiToken` and `curseforgeApiToken` values to your user-specific gradle properties
+1. Install Python 3.11+, then follow [these instructions](https://pypa.github.io/pipx/#install-pipx) to install pipx.
+   * pipx is basically like Node's `npx` but for Python - it's a tool to help you install and run end-user applications written in Python.
+2. Create, clone, and enter a new GitHub repo.
+3. From the repo root, run these commands to copy and set up the template, then follow the prompts:
+   ```
+   pipx install copier
+   copier copy gh:artynova/hexdummy .
+   ```
+4. Add `modrinthApiToken` and `curseforgeApiToken` values to your user-specific gradle properties
    in [Gradle User Home](https://docs.gradle.org/current/userguide/directory_layout.html#dir:gradle_user_home).
    You can leave them empty for now.
-3. In the entire project, rename occurrences of `hexdummy` to your mod's id, both in files and in directory structure.
-   Preferably also change occurrences adjacent to "Dummy" in text and file names to something related to your
-   project, and change the base package path to something other than `net.hexdummy`, e.g.
-   to `io.github.yourname.yourmod`.
-3. Check out the [Architectury wiki](https://docs.architectury.dev/start) if you haven't yet. If you can't find
+5. Check out the [Architectury wiki](https://docs.architectury.dev/start) if you haven't yet. If you can't find
    something there, try searching on their Discord.
-4. After checking out how demo patterns are registered, replace them with your own! You can look into Hex Casting
+6. After checking out how demo patterns are registered, replace them with your own! You can look into Hex Casting
    sources to see real implementations. If you're new to this,
    here's a challenge: try making a single-pattern equivalent of the raycast mantra.
-5. Launch the game client. Time for testing!
-6. (Optional) Set up the publishMods tasks to simplify publishing updates: add necessary API keys to your
+7. Launch the game client with `gradlew fabric:runClient`. Time for testing!
+8. (Optional) Set up the publishMods tasks to simplify publishing updates: add necessary API keys to your
    user-specific properties, add necessary project ids to root `gradle.properties`, and uncomment
    curseforge / modrinth / both segments in the publishMods task in `build.gradle` files from `forge` and 
    `fabric` directories.
@@ -56,6 +58,10 @@ light, beginner-friendly, and up-to-date, in my opinion. However, do check out T
 to see how to add configs and / or see how the Xplat multiloader layout works, which is what Hex Casting
 itself and some other addons use.
 
+## Contributing
+
+
+
 ## Acknowledgements
 
 - [Petrak@](https://github.com/gamma-delta) and other Hex Casting devs, for making Hex Casting in general.
@@ -64,5 +70,5 @@ itself and some other addons use.
 - [SamsTheNerd](https://github.com/SamsTheNerd), author of the Hex Gloop addon also powered by Architectury: its
   setup code helped me resolve an issue or two with Architectury here.
 - [Architectury](https://github.com/architectury) devs and their Discord server.
-- [\[object Hexxy.Media\]](https://github.com/object-Object) and [Cypher](https://github.com/Cypher121), for some
+- [object-Object](https://github.com/object-Object) and [Cypher](https://github.com/Cypher121), for some
   helpful pointers after initial template release.
