@@ -1,14 +1,14 @@
-package net.hexdummy.fabric;
+package {{ package }}.fabric;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.hexdummy.HexDummyClient;
+import {{ package }}.{{ classname }}Client;
 
 /**
  * Fabric client loading entrypoint.
  */
-public class HexDummyClientFabric implements ClientModInitializer {
+public class {{ classname }}ClientFabric implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        HexDummyClient.init();
+        {{ classname }}Client.init();
     }
 }

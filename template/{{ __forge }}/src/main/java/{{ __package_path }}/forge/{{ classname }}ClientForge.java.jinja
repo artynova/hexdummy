@@ -1,13 +1,13 @@
-package net.hexdummy.forge;
+package {{ package }}.forge;
 
-import net.hexdummy.HexDummyClient;
+import {{ package }}.{{ classname }}Client;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 /**
  * Forge client loading entrypoint.
  */
-public class HexDummyClientForge {
+public class {{ classname }}ClientForge {
     public static void init(FMLClientSetupEvent event) {
-        HexDummyClient.init();
+        {{ classname }}Client.init();
     }
 }

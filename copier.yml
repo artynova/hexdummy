@@ -8,14 +8,30 @@ _answers_file: .copier-answers.hexdummy.yml
 modid:
   type: str
 
+author:
+  type: str
+
 classname:
   type: str
-  help: "Base text for classnames (eg. '{{ modid|capitalize }}' -> '{{ modid|capitalize }}Client.java')"
+  help: "classname base (eg. '{{ modid|capitalize }}' -> '{{ modid|capitalize }}Client.java')"
   default: "{{ modid|capitalize }}"
 
 display_name:
   type: str
   default: "{{ classname }}"
+
+description:
+  type: str
+  help: description
+  default: "{{ display_name }} addon for Hex Casting"
+
+sources_url:
+  type: str
+  default: "https://github.com/{{ author }}/{{ modid }}"
+
+homepage_url:
+  type: str
+  default: "https://{{ author }}.github.io/{{ modid }}"
 
 package:
   type: str
@@ -26,19 +42,27 @@ capitalize_platforms:
   help: Capitalize platform directory names? (eg. Common vs common)
   default: false
 
-# computed values
+initial_version:
+  type: str
+  default: "0.0.1"
+
+# static/computed values
+
+__hexcasting_version:
+  when: false
+  default: "0.10.3"
 
 __common:
   when: false
-  default: "{% 'Common' if capitalize_platforms else 'common' %}"
+  default: "{{ 'Common' if capitalize_platforms else 'common' }}"
 
 __fabric:
   when: false
-  default: "{% 'Fabric' if capitalize_platforms else 'fabric' %}"
+  default: "{{ 'Fabric' if capitalize_platforms else 'fabric' }}"
 
 __forge:
   when: false
-  default: "{% 'Forge' if capitalize_platforms else 'forge' %}"
+  default: "{{ 'Forge' if capitalize_platforms else 'forge' }}"
 
 __package_path:
   when: false

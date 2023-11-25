@@ -1,4 +1,4 @@
-package net.hexdummy.registry;
+package {{ package }}.registry;
 
 import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.api.spell.iota.IotaType;
@@ -9,9 +9,9 @@ import net.minecraft.util.registry.Registry;
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.hexdummy.HexDummy.id;
+import static {{ package }}.{{ classname }}.id;
 
-public class HexDummyIotaTypeRegistry {
+public class {{ classname }}IotaTypeRegistry {
     public static Map<Identifier, IotaType<?>> TYPES = new HashMap<>();
 
     public static void init() {

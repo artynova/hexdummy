@@ -1,4 +1,4 @@
-package net.hexdummy.casting.patterns.spells
+package {{ package }}.casting.patterns.spells
 
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.spell.ParticleSpray
@@ -40,7 +40,7 @@ class OpCongrats : SpellAction {
 
         if (target !is ServerPlayerEntity) throw MishapBadEntity(
             target,
-            Text.translatable("text.hexdummy.congrats.player")
+            Text.translatable("text.{{ modid }}.congrats.player")
         )
 
         return Triple(
@@ -57,7 +57,7 @@ class OpCongrats : SpellAction {
      */
     private data class Spell(val player: ServerPlayerEntity) : RenderedSpell {
         override fun cast(ctx: CastingContext) {
-            ctx.caster.sendMessage(Text.translatable("text.hexdummy.congrats", player.displayName));
+            ctx.caster.sendMessage(Text.translatable("text.{{ modid }}.congrats", player.displayName));
         }
     }
 }

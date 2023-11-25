@@ -1,13 +1,13 @@
-package net.hexdummy.forge;
+package {{ package }}.forge;
 
-import net.hexdummy.DummyAbstractions;
+import {{ package }}.{{ classname }}Abstractions;
 import net.minecraftforge.fml.loading.FMLPaths;
 
 import java.nio.file.Path;
 
-public class DummyAbstractionsImpl {
+public class {{ classname }}AbstractionsImpl {
     /**
-     * This is the actual implementation of {@link DummyAbstractions#getConfigDirectory()}.
+     * This is the actual implementation of {@link {{ classname }}Abstractions#getConfigDirectory()}.
      */
     public static Path getConfigDirectory() {
         return FMLPaths.CONFIGDIR.get();

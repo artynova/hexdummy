@@ -1,11 +1,11 @@
-package net.hexdummy;
+package {{ package }};
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import dev.architectury.platform.Platform;
 
 import java.nio.file.Path;
 
-public class DummyAbstractions {
+public class {{ classname }}Abstractions {
     /**
      * This explanation is mostly from Architectury's template project.
      * One thing I would like to add for those familiar with Hex Casting's layout:
@@ -18,11 +18,11 @@ public class DummyAbstractions {
      * <p>
      * Example:
      * <p>
-     * Expect: net.hexdummy.DummyAbstractions#getConfigDirectory()
+     * Expect: {{ package }}.{{ classname }}Abstractions#getConfigDirectory()
      * <p>
-     * Actual Fabric: net.hexdummy.fabric.DummyAbstractionsImpl#getConfigDirectory()
+     * Actual Fabric: {{ package }}.fabric.{{ classname }}AbstractionsImpl#getConfigDirectory()
      * <p>
-     * Actual Forge: net.hexdummy.forge.DummyAbstractionsImpl#getConfigDirectory()
+     * Actual Forge: {{ package }}.forge.{{ classname }}AbstractionsImpl#getConfigDirectory()
      * <p>
      * <a href="https://plugins.jetbrains.com/plugin/16210-architectury">You should also get the IntelliJ plugin to help with @ExpectPlatform.</a>
      */

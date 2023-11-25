@@ -1,7 +1,7 @@
-package net.hexdummy.forge;
+package {{ package }}.forge;
 
 import dev.architectury.platform.forge.EventBuses;
-import net.hexdummy.HexDummy;
+import {{ package }}.{{ classname }};
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -10,13 +10,13 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
  * This is your loading entrypoint on forge, in case you need to initialize
  * something platform-specific.
  */
-@Mod(HexDummy.MOD_ID)
-public class HexDummyForge {
-    public HexDummyForge() {
+@Mod({{ classname }}.MOD_ID)
+public class {{ classname }}Forge {
+    public {{ classname }}Forge() {
         // Submit our event bus to let architectury register our content on the right time
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        EventBuses.registerModEventBus(HexDummy.MOD_ID, bus);
-        bus.addListener(HexDummyClientForge::init);
-        HexDummy.init();
+        EventBuses.registerModEventBus({{ classname }}.MOD_ID, bus);
+        bus.addListener({{ classname }}ClientForge::init);
+        {{ classname }}.init();
     }
 }

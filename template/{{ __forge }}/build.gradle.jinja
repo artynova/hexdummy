@@ -17,8 +17,8 @@ loom {
         convertAccessWideners = true
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
 
-        mixinConfig "hexdummy-common.mixins.json"
-        mixinConfig "hexdummy.mixins.json"
+        mixinConfig "{{ modid }}-common.mixins.json"
+        mixinConfig "{{ modid }}.mixins.json"
     }
 }
 
@@ -132,7 +132,7 @@ publishMods {
     modLoaders.add("forge")
 
     version = project.version + "-forge"
-    displayName = "Hex Dummy $project.version [Forge]"
+    displayName = "{{ display_name }} $project.version [Forge]"
 
     // Uncomment your desired platform(s)
 //    curseforge {

@@ -1,23 +1,23 @@
-package net.hexdummy.registry;
+package {{ package }}.registry;
 
 import at.petrak.hexcasting.api.PatternRegistry;
 import at.petrak.hexcasting.api.spell.Action;
 import at.petrak.hexcasting.api.spell.math.HexDir;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
 import kotlin.Triple;
-import net.hexdummy.casting.patterns.math.OpSignum;
-import net.hexdummy.casting.patterns.spells.OpCongrats;
+import {{ package }}.casting.patterns.math.OpSignum;
+import {{ package }}.casting.patterns.spells.OpCongrats;
 import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.hexdummy.HexDummy.id;
+import static {{ package }}.{{ classname }}.id;
 
-public class HexDummyPatternRegistry {
+public class {{ classname }}PatternRegistry {
     public static List<Triple<HexPattern, Identifier, Action>> PATTERNS = new ArrayList<>();
     public static List<Triple<HexPattern, Identifier, Action>> PER_WORLD_PATTERNS = new ArrayList<>();
-    // IMPORTANT: be careful to keep the registration calls looking like this or be prepared to edit the regex pattern on line 199 of the docgen script (doc/collate_data.py)
+    // IMPORTANT: be careful to keep the registration calls looking like this, or you'll have to edit the hexdoc pattern regex.
     public static HexPattern CONGRATS = registerPerWorld(HexPattern.fromAngles("eed", HexDir.WEST), "congrats", new OpCongrats());
     public static HexPattern SIGNUM = register(HexPattern.fromAngles("edd", HexDir.NORTH_WEST), "signum", new OpSignum());
 

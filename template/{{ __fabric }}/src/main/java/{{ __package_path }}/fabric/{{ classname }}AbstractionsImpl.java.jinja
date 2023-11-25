@@ -1,13 +1,13 @@
-package net.hexdummy.fabric;
+package {{ package }}.fabric;
 
 import net.fabricmc.loader.api.FabricLoader;
-import net.hexdummy.DummyAbstractions;
+import {{ package }}.{{ classname }}Abstractions;
 
 import java.nio.file.Path;
 
-public class DummyAbstractionsImpl {
+public class {{ classname }}AbstractionsImpl {
     /**
-     * This is the actual implementation of {@link DummyAbstractions#getConfigDirectory()}.
+     * This is the actual implementation of {@link {{ classname }}Abstractions#getConfigDirectory()}.
      */
     public static Path getConfigDirectory() {
         return FabricLoader.getInstance().getConfigDir();

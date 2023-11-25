@@ -1,7 +1,10 @@
 {
     "files.associations": {
-        "*.java.jinja": "jinja-java",
-        "*.properties.jinja": "jinja-properties",
         "*.css.jinja": "jinja-css",
+        "*.gradle.jinja": "jinja-groovy",
+        "*.java.jinja": "jinja-java",
+        "*.kt.jinja": "jinja-groovy",
+        "*.mcmeta.jinja": "jinja-json",
+        "*.properties.jinja": "jinja-properties",
     },
 }

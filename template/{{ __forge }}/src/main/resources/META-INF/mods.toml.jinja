@@ -4,39 +4,39 @@ loaderVersion = "[43,)"
 license = "MIT"
 
 [[mods]]
-modId = "hexdummy"
+modId = "{{ modid }}"
 version = "${version}"
-displayName = "Dummy Hex Casting Addon"
+displayName = "{{ display_name }}"
 logoFile = "icon.png"
-authors = "artynova"
+authors = "{{ author }}"
 description = '''
-Describe me!
+{{ description }}
 '''
 
-[[dependencies.hexdummy]]
+[[dependencies.{{ modid }}]]
 modId = "forge"
 mandatory = true
 versionRange = "[43,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.hexdummy]]
+[[dependencies.{{ modid }}]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.19.2,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.hexdummy]]
+[[dependencies.{{ modid }}]]
 modId = "architectury"
 mandatory = true
 versionRange = "[6.5.85,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.hexdummy]]
+[[dependencies.{{ modid }}]]
 modId = "hexcasting"
 mandatory = true
-versionRange = "[0.10.3,)"
+versionRange = "[{{ __hexcasting_version }},)"
 ordering = "NONE"
 side = "BOTH"
