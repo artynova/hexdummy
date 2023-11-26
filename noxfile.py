@@ -39,7 +39,7 @@ def book(session: nox.Session):
         session.run(
             "copier",
             "copy",
-            "gh:object-Object/hexdoc-hexcasting-template",
+            "gh:hexdoc-dev/hexdoc-hexcasting-template",
             ".",
             "--answers-file",
             ".hexdoc-template-inputs.yml",
