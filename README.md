@@ -19,7 +19,7 @@ from [Architectury templates](https://github.com/architectury/architectury-templ
    pipx install copier
 
    # main addon
-   copier copy gh:artynova/hexdummy .
+   copier copy gh:object-Object/hexdummy .
    
    # hexdoc web book
    # note: unless otherwise specified, when the prompts here refer to "package", it means the Python hexdoc addon package being created
