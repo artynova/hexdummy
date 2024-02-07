@@ -1,6 +1,6 @@
 # Dummy Hex Casting Addon
 
-Or HexDummy for short! This is an up-to-date bare-bones template for starting a multiloader Hex Casting addon on
+Or HexDummy for short! This is a bare-bones template for starting a multiloader Hex Casting addon on
 1.19.2 with Architectury. Includes all necessary dependencies on both Forge and Fabric loaders, plus some demo
 bits. There is nothing specifically for Quilt here because Fabric builds implicitly support Quilt.
 
@@ -8,6 +8,9 @@ It is an amalgamation of the [HexCastingEmptyAddon](https://github.com/Talia-12/
 the forge-fabric-mixin 1.19.2 template
 from [Architectury templates](https://github.com/architectury/architectury-templates), a few helpful bits from
 [Hex Gloop](https://github.com/SamsTheNerd/HexGloop)'s setup, and some custom improvements thrown in.
+
+## Before you use this
+This repository is deprecated and is not going to be updated. I am grateful that it was a part of the Hex Casting addon template history, but now there are better options. This might still be useful if you are just experimenting with Hex Casting addon development, but if you are looking to start and subsequently release a full-fledged addon, I **highly** recommend using [this awesome fork](https://github.com/FallingColors/hexdummy) instead. It is more customizable due to a sophisticated templating tool, and it and supports the new version of addon web documentation generation. Regards to [object Object](https://github.com/object-Object) as the main developer of the fork!
 
 ## How to get started?
 
